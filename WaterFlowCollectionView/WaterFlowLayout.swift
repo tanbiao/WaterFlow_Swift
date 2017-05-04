@@ -1,8 +1,4 @@
 
-
-
-
-
 //
 //  WaterFlowLayout.swift
 //  WaterFlowCollectionView
@@ -13,22 +9,23 @@
 
 import UIKit
 
+
   @objc  protocol WaterflowLayoutDelegate : NSObjectProtocol
     {
         //这个代理方法必须实现
-        func waterflowLayout(waterflowLayout: WaterFlowLayout,index:Int,itemWidth: CGFloat)-> CGFloat
+        func waterflowLayout(_ waterflowLayout: WaterFlowLayout,index:Int,itemWidth: CGFloat)-> CGFloat
 
         //获取列数
-        optional  func columnCountInWaterflowLayout(waterflowLayout:WaterFlowLayout) -> Int
+        @objc optional  func columnCountInWaterflowLayout(_ waterflowLayout:WaterFlowLayout) -> Int
 
         //获取每列之间的间距
-        optional  func columnMarginInWaterflowLayout(waterflowLayout:WaterFlowLayout ) -> CGFloat
+        @objc optional  func columnMarginInWaterflowLayout(_ waterflowLayout:WaterFlowLayout ) -> CGFloat
 
         //每一行之间的间距
-        optional  func rowMarginInWaterflowLayout(waterflowLayout:WaterFlowLayout ) -> CGFloat
+        @objc optional  func rowMarginInWaterflowLayout(_ waterflowLayout:WaterFlowLayout ) -> CGFloat
 
         //整个CollectionView四周边缘间距
-        optional func edgeInsetsInWaterflowLayout(waterflowLayout:WaterFlowLayout) -> UIEdgeInsets
+        @objc optional func edgeInsetsInWaterflowLayout(_ waterflowLayout:WaterFlowLayout) -> UIEdgeInsets
 
     }
 
@@ -37,71 +34,39 @@ import UIKit
         weak var delegate : WaterflowLayoutDelegate?
         
         /** 存放所有cell的布局属性 */
-        private var attrsArray = [UICollectionViewLayoutAttributes]()
+        fileprivate var attrsArray = [UICollectionViewLayoutAttributes]()
         
         /** 存放所有列的当前高度 */
-        private var columnHeights = [CGFloat]()
+        fileprivate var columnHeights = [CGFloat]()
         /** 内容的高度 */
-        private  var contentHeight : CGFloat?
+        fileprivate  var contentHeight : CGFloat?
 
         let Margin : CGFloat = 10.0
 
-        private var rowInset : UIEdgeInsets{
+        fileprivate var rowInset : UIEdgeInsets {
             
-            let  flag = delegate?.respondsToSelector(#selector(WaterflowLayoutDelegate.edgeInsetsInWaterflowLayout(_:)))
-            
-            if flag == true {
-                
-              return (delegate?.edgeInsetsInWaterflowLayout!(self))!
-                
-            }
-            
-            return UIEdgeInsetsMake(Margin, Margin, Margin, Margin)
-            
+            return delegate?.edgeInsetsInWaterflowLayout!(self) ?? UIEdgeInsets()
+
         }
         
-        private var rowMagin : CGFloat{
-        
-            let flag = delegate?.respondsToSelector(#selector(WaterflowLayoutDelegate.rowMarginInWaterflowLayout(_:)))
+        fileprivate var rowMagin : CGFloat{
             
-            if flag == true {
-                
-                return (delegate?.rowMarginInWaterflowLayout!(self))!
-            }
-            
-            return Margin
-          
+            return delegate?.rowMarginInWaterflowLayout!(self) ?? Margin
         }
 
-        private var columnMargin : CGFloat {
-         
-            let flag = delegate?.respondsToSelector(#selector(WaterflowLayoutDelegate.columnMarginInWaterflowLayout(_:)))
+        fileprivate var columnMargin : CGFloat {
             
-            if flag == true {
-                
-                return (delegate?.columnMarginInWaterflowLayout!(self))!
-            }
-            
-            return Margin
-        
+            return delegate?.columnMarginInWaterflowLayout!(self) ?? Margin
         }
 
-        private var columnCount :Int {
+        fileprivate var columnCount :Int {
             
-            let flag = delegate?.respondsToSelector(#selector(WaterflowLayoutDelegate.columnCountInWaterflowLayout(_:)))
-            
-            if  flag == true {
-                
-                return (delegate?.columnCountInWaterflowLayout!(self))!
-            }
-         
-            return 3
-        
+            return delegate?.columnCountInWaterflowLayout!(self) ?? 3
         }
 
     //准备布局 这个方法没刷新一次就回来到这里
-    override func prepareLayout() {
-        super.prepareLayout()
+    override func prepare() {
+        super.prepare()
         
         contentHeight = 0
         columnHeights.removeAll()
@@ -113,36 +78,28 @@ import UIKit
         
         attrsArray.removeAll()
         
-        let count = collectionView?.numberOfItemsInSection(0)
-        
         //第一次来的时候获取的count为零
-        if count == 0 {
-            
-            return
-        }
+        let count = collectionView?.numberOfItems(inSection: 0)
+        if count == 0 {return }
         
         //获取每个item的布局属性,并且对每个item进行布局
         for j in 0...count! - 1
         {
-          let indexPath = NSIndexPath.init(forItem: j, inSection: 0)
+          let indexPath = IndexPath.init(item: j, section: 0)
           
-          let atts = layoutAttributesForItemAtIndexPath(indexPath)
-            
-            if atts == nil {
-                
-                return
-            }
-        attrsArray.append((atts)!)
+          guard let atts = layoutAttributesForItem(at: indexPath) else { return }
+       
+          attrsArray.append(atts)
             
         }
         
     }
 
     //某一行的属性
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
         //拿到当前cell的布局属性
-        let attrs = UICollectionViewLayoutAttributes.init(forCellWithIndexPath: indexPath)
+        let attrs = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
         
         let collectionViewW = collectionView?.frame.size.width
         
@@ -179,15 +136,15 @@ import UIKit
             y += rowMagin
         }
         
-        attrs.frame = CGRectMake(x, y, w, h!)
+        attrs.frame = CGRect(x: x, y: y, width: w, height: h!)
         
         //更新最短那列高度
-        columnHeights[desColumn] = (CGRectGetMaxY(attrs.frame))
+        columnHeights[desColumn] = (attrs.frame.maxY)
         
         //contentSize的高度 为最高那列的高度
         let columnHeight = columnHeights[desColumn]
         
-        if self.contentHeight < columnHeight  {
+        if self.contentHeight! < columnHeight  {
             
             self.contentHeight = columnHeight
         }
@@ -196,16 +153,16 @@ import UIKit
     }
 
     //这个方法就是需要加载没个Item的布局属性
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         return attrsArray
         
     }
 
     //当contentSize改变的时候,就会来到这个方法
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         
-        return CGSizeMake(0, contentHeight! + rowInset.bottom)
+        return CGSize(width: 0, height: contentHeight! + rowInset.bottom)
     }
 
 

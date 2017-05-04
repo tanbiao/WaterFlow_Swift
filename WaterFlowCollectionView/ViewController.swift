@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func btnClick(sender: AnyObject) {
+    @IBAction func btnClick(_ sender: AnyObject) {
         
         let waterVC = WaterFlowViewController()
         

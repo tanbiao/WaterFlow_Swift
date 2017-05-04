@@ -23,11 +23,11 @@ class ShopModel: NSObject {
     {
      super.init()
         
-     setValuesForKeysWithDictionary(dict)
+     setValuesForKeys(dict)
     
     }
     
-    override func setValue(value: AnyObject?, forUndefinedKey key: String)
+    override func setValue(_ value: Any?, forUndefinedKey key: String)
     {
         
     }

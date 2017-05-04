@@ -12,7 +12,7 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     let waterCellID = "WaterFallCell"
     
-    var  dataArr = NSMutableArray()
+    var  dataArr = [ShopModel]()
     
     var collectionView: UICollectionView?
     
@@ -49,20 +49,19 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     {
         weak var weakSelf = self
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             
-            let filePath = NSBundle.mainBundle().pathForResource("1.plist", ofType: nil)
+            let filePath = Bundle.main.path(forResource: "1.plist", ofType: nil)
             
-            let arr = NSMutableArray.init(contentsOfFile: filePath!)!
-            
-            let  shops  = NSMutableArray()
+            let arr = NSMutableArray.init(contentsOfFile: filePath!)!            
+            var shops  = [ShopModel]()
             
             for dict in arr {
                 
                 let shopM = ShopModel.init(dict: dict as! [String : AnyObject])
                 
-                shops.addObject(shopM)
+                shops.append(shopM)
             }
             
             weakSelf!.dataArr = shops
@@ -77,10 +76,10 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     {
          weak var weakSelf = self
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()){
+        let delayTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime){
         
-            let filePath = NSBundle.mainBundle().pathForResource("1.plist", ofType: nil)
+            let filePath = Bundle.main.path(forResource: "1.plist", ofType: nil)
             
             let arr = NSMutableArray.init(contentsOfFile: filePath!)!
             
@@ -93,7 +92,7 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
                 shops.append(shopM)
             }
             
-            weakSelf!.dataArr.addObjectsFromArray(shops)
+            weakSelf!.dataArr.append(contentsOf: shops)
             weakSelf!.collectionView?.reloadData()
             weakSelf!.collectionView?.mj_footer.endRefreshing()
             
@@ -113,10 +112,10 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         
         let nib = UINib.init(nibName: "WaterFallCell", bundle: nil)
-        collectionView.registerNib(nib, forCellWithReuseIdentifier: waterCellID)
+        collectionView.register(nib, forCellWithReuseIdentifier: waterCellID)
         /**
          hah
          */
@@ -136,49 +135,49 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
 extension WaterFlowViewController
 {
     //MARK: UICollectionViewDataSource
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
        return dataArr.count
     }
       
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(waterCellID, forIndexPath: indexPath) as! WaterFallCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: waterCellID, for: indexPath) as! WaterFallCell
         
         let shopM = dataArr[indexPath.row] 
         
-        cell.shopM = shopM as? ShopModel
+        cell.shopM = shopM
         
         return cell
           
     }
     
     //MARK:WaterflowLayoutDelegate==========必须实现
-    func waterflowLayout(waterflowLayout: WaterFlowLayout, index: Int, itemWidth: CGFloat) -> (CGFloat) {
+    func waterflowLayout(_ waterflowLayout: WaterFlowLayout, index: Int, itemWidth: CGFloat) -> (CGFloat) {
                
-        let shopM = self.dataArr[index] as! ShopModel
+        let shopM = self.dataArr[index]
         
         return itemWidth * shopM.h / shopM.w
         
     }
     
     //MARK:WaterflowLayoutDelegate==========可选实现
-    func columnCountInWaterflowLayout(waterflowLayout: WaterFlowLayout) -> Int {
+    func columnCountInWaterflowLayout(_ waterflowLayout: WaterFlowLayout) -> Int {
         
         return 4
     }
     
-    func columnMarginInWaterflowLayout(waterflowLayout: WaterFlowLayout) -> CGFloat {
+    func columnMarginInWaterflowLayout(_ waterflowLayout: WaterFlowLayout) -> CGFloat {
         
         return 5
     }
     
-    func rowMarginInWaterflowLayout(waterflowLayout: WaterFlowLayout) -> CGFloat {
+    func rowMarginInWaterflowLayout(_ waterflowLayout: WaterFlowLayout) -> CGFloat {
         
         return 5
     }
     
-    func edgeInsetsInWaterflowLayout(waterflowLayout: WaterFlowLayout) -> UIEdgeInsets {
+    func edgeInsetsInWaterflowLayout(_ waterflowLayout: WaterFlowLayout) -> UIEdgeInsets {
         
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }

@@ -16,11 +16,11 @@ class WaterFallCell: UICollectionViewCell {
     {
         didSet{
          
-          let url = NSURL.init(string: (shopM?.img)! as String)
+          let url = URL.init(string: (shopM?.img)! as String)
             
-           dispatch_async(dispatch_get_main_queue()) { 
+           DispatchQueue.main.async { 
             
-              self.shopImageView.sd_setImageWithURL(url)
+              self.shopImageView.sd_setImage(with: url)
             
             }
                 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D4522721EBB801500267126 /* WaterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4522711EBB801500267126 /* WaterFlowLayout.swift */; };
 		9DDEF9C01D62B94F002867FD /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEF9BF1D62B94F002867FD /* ShopModel.swift */; };
 		9DF4B5DE1D62A91300F1992B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B5DD1D62A91300F1992B /* AppDelegate.swift */; };
 		9DF4B5E01D62A91300F1992B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B5DF1D62A91300F1992B /* ViewController.swift */; };
@@ -17,7 +18,6 @@
 		9DF4B5F61D62A91400F1992B /* WaterFlowCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B5F51D62A91400F1992B /* WaterFlowCollectionViewTests.swift */; };
 		9DF4B6011D62A91400F1992B /* WaterFlowCollectionViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B6001D62A91400F1992B /* WaterFlowCollectionViewUITests.swift */; };
 		9DF4B6101D62A99800F1992B /* WaterFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B60E1D62A99800F1992B /* WaterFlowViewController.swift */; };
-		9DF4B6131D62AA0100F1992B /* WaterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B6121D62AA0100F1992B /* WaterFlowLayout.swift */; };
 		9DF4B6371D62AAA300F1992B /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B6171D62AAA300F1992B /* MKAnnotationView+WebCache.m */; };
 		9DF4B6381D62AAA300F1992B /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B6191D62AAA300F1992B /* NSData+ImageContentType.m */; };
 		9DF4B6391D62AAA300F1992B /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B61B1D62AAA300F1992B /* SDImageCache.m */; };
@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D4522711EBB801500267126 /* WaterFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowLayout.swift; sourceTree = "<group>"; };
 		9DDEF9BF1D62B94F002867FD /* ShopModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		9DF4B5DA1D62A91200F1992B /* WaterFlowCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterFlowCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF4B5DD1D62A91300F1992B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		9DF4B6001D62A91400F1992B /* WaterFlowCollectionViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFlowCollectionViewUITests.swift; sourceTree = "<group>"; };
 		9DF4B6021D62A91400F1992B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF4B60E1D62A99800F1992B /* WaterFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowViewController.swift; sourceTree = "<group>"; };
-		9DF4B6121D62AA0100F1992B /* WaterFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowLayout.swift; sourceTree = "<group>"; };
 		9DF4B6141D62AA5000F1992B /* WaterFlowCollectionView_Brige_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterFlowCollectionView_Brige_Header.h; sourceTree = "<group>"; };
 		9DF4B6161D62AAA300F1992B /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		9DF4B6171D62AAA300F1992B /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 				9DF4B75A1D62B79300F1992B /* MJRefresh */,
 				9DF4B6151D62AAA300F1992B /* SDWebImage */,
 				9DF4B5DD1D62A91300F1992B /* AppDelegate.swift */,
+				9D4522711EBB801500267126 /* WaterFlowLayout.swift */,
 				9DF4B5DF1D62A91300F1992B /* ViewController.swift */,
-				9DF4B6121D62AA0100F1992B /* WaterFlowLayout.swift */,
 				9DF4B60E1D62A99800F1992B /* WaterFlowViewController.swift */,
 				9DDEF9BF1D62B94F002867FD /* ShopModel.swift */,
 				9DF4B64A1D62ACD900F1992B /* WaterFallCell.swift */,
@@ -467,13 +467,16 @@
 				TargetAttributes = {
 					9DF4B5D91D62A91200F1992B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 					};
 					9DF4B5F01D62A91400F1992B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 9DF4B5D91D62A91200F1992B;
 					};
 					9DF4B5FB1D62A91400F1992B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 9DF4B5D91D62A91200F1992B;
 					};
 				};
@@ -536,7 +539,6 @@
 			files = (
 				9DF4B7941D62B79300F1992B /* MJRefreshGifHeader.m in Sources */,
 				9DF4B7991D62B79300F1992B /* NSBundle+MJRefresh.m in Sources */,
-				9DF4B6131D62AA0100F1992B /* WaterFlowLayout.swift in Sources */,
 				9DF4B6441D62AAA300F1992B /* UIImageView+HighlightedWebCache.m in Sources */,
 				9DDEF9C01D62B94F002867FD /* ShopModel.swift in Sources */,
 				9DF4B7901D62B79300F1992B /* MJRefreshAutoStateFooter.m in Sources */,
@@ -566,6 +568,7 @@
 				9DF4B79A1D62B79300F1992B /* UIScrollView+MJExtension.m in Sources */,
 				9DF4B79B1D62B79300F1992B /* UIScrollView+MJRefresh.m in Sources */,
 				9DF4B78F1D62B79300F1992B /* MJRefreshAutoNormalFooter.m in Sources */,
+				9D4522721EBB801500267126 /* WaterFlowLayout.swift in Sources */,
 				9DF4B6411D62AAA300F1992B /* UIImage+GIF.m in Sources */,
 				9DF4B63A1D62AAA300F1992B /* SDWebImageCompat.m in Sources */,
 				9DF4B7891D62B79300F1992B /* MJRefreshAutoFooter.m in Sources */,
@@ -724,6 +727,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = WaterFlowCollectionView/WaterFlowCollectionView_Brige_Header.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -736,6 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = WaterFlowCollectionView/WaterFlowCollectionView_Brige_Header.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -747,6 +752,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterFlowCollectionView.app/WaterFlowCollectionView";
 			};
 			name = Debug;
@@ -759,6 +765,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaterFlowCollectionView.app/WaterFlowCollectionView";
 			};
 			name = Release;
@@ -770,6 +777,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionViewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WaterFlowCollectionView;
 			};
 			name = Debug;
@@ -781,6 +789,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tb.WaterFlowCollectionViewUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WaterFlowCollectionView;
 			};
 			name = Release;
