@@ -14,9 +14,9 @@ class ShopModel: NSObject {
     
     var h : CGFloat = 0.0
     
-    var img : NSString = ""
+    var img : String = ""
     
-    var price : NSString = ""
+    var price  = ""
     
     
     init(dict:[String : AnyObject])

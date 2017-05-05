@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D3F8D471EBC53FC000A5A4A /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F8D461EBC53FC000A5A4A /* TransitionAnimation.swift */; };
+		9D3F8D4A1EBC5D4B000A5A4A /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F8D481EBC5D4B000A5A4A /* ImagePickerViewController.swift */; };
+		9D3F8D4B1EBC5D4B000A5A4A /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3F8D491EBC5D4B000A5A4A /* ImagePickerViewController.xib */; };
+		9D3F8D4E1EBC5F9D000A5A4A /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F8D4C1EBC5F9D000A5A4A /* ImagePickerCell.swift */; };
+		9D3F8D4F1EBC5F9D000A5A4A /* ImagePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3F8D4D1EBC5F9D000A5A4A /* ImagePickerCell.xib */; };
+		9D3F8D531EBC6477000A5A4A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F8D521EBC6477000A5A4A /* Reusable.swift */; };
+		9D3F8D551EBC6566000A5A4A /* ImagePickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F8D541EBC6566000A5A4A /* ImagePickerLayout.swift */; };
 		9D4522721EBB801500267126 /* WaterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4522711EBB801500267126 /* WaterFlowLayout.swift */; };
 		9DDEF9C01D62B94F002867FD /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEF9BF1D62B94F002867FD /* ShopModel.swift */; };
 		9DF4B5DE1D62A91300F1992B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF4B5DD1D62A91300F1992B /* AppDelegate.swift */; };
@@ -78,6 +85,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D3F8D461EBC53FC000A5A4A /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
+		9D3F8D481EBC5D4B000A5A4A /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		9D3F8D491EBC5D4B000A5A4A /* ImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerViewController.xib; sourceTree = "<group>"; };
+		9D3F8D4C1EBC5F9D000A5A4A /* ImagePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
+		9D3F8D4D1EBC5F9D000A5A4A /* ImagePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerCell.xib; sourceTree = "<group>"; };
+		9D3F8D521EBC6477000A5A4A /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		9D3F8D541EBC6566000A5A4A /* ImagePickerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerLayout.swift; sourceTree = "<group>"; };
 		9D4522711EBB801500267126 /* WaterFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowLayout.swift; sourceTree = "<group>"; };
 		9DDEF9BF1D62B94F002867FD /* ShopModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		9DF4B5DA1D62A91200F1992B /* WaterFlowCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterFlowCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,9 +243,16 @@
 				9DF4B5DD1D62A91300F1992B /* AppDelegate.swift */,
 				9D4522711EBB801500267126 /* WaterFlowLayout.swift */,
 				9DF4B5DF1D62A91300F1992B /* ViewController.swift */,
-				9DF4B60E1D62A99800F1992B /* WaterFlowViewController.swift */,
 				9DDEF9BF1D62B94F002867FD /* ShopModel.swift */,
 				9DF4B64A1D62ACD900F1992B /* WaterFallCell.swift */,
+				9D3F8D461EBC53FC000A5A4A /* TransitionAnimation.swift */,
+				9D3F8D541EBC6566000A5A4A /* ImagePickerLayout.swift */,
+				9D3F8D481EBC5D4B000A5A4A /* ImagePickerViewController.swift */,
+				9D3F8D491EBC5D4B000A5A4A /* ImagePickerViewController.xib */,
+				9D3F8D4C1EBC5F9D000A5A4A /* ImagePickerCell.swift */,
+				9D3F8D4D1EBC5F9D000A5A4A /* ImagePickerCell.xib */,
+				9DF4B60E1D62A99800F1992B /* WaterFlowViewController.swift */,
+				9D3F8D521EBC6477000A5A4A /* Reusable.swift */,
 				9DF4B64B1D62ACD900F1992B /* WaterFallCell.xib */,
 				9DF4B5E11D62A91300F1992B /* Main.storyboard */,
 				9DF4B6141D62AA5000F1992B /* WaterFlowCollectionView_Brige_Header.h */,
@@ -507,11 +528,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF4B64F1D62ADD700F1992B /* 1.plist in Resources */,
+				9D3F8D4F1EBC5F9D000A5A4A /* ImagePickerCell.xib in Resources */,
 				9DF4B5EB1D62A91400F1992B /* LaunchScreen.storyboard in Resources */,
 				9DF4B5E81D62A91400F1992B /* Assets.xcassets in Resources */,
 				9DF4B64D1D62ACD900F1992B /* WaterFallCell.xib in Resources */,
 				9DF4B6491D62ABE400F1992B /* Info.plist in Resources */,
 				9DF4B7971D62B79300F1992B /* MJRefresh.bundle in Resources */,
+				9D3F8D4B1EBC5D4B000A5A4A /* ImagePickerViewController.xib in Resources */,
 				9DF4B5E31D62A91300F1992B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,12 +568,14 @@
 				9DF4B6451D62AAA300F1992B /* UIImageView+WebCache.m in Sources */,
 				9DF4B6431D62AAA300F1992B /* UIImage+WebP.m in Sources */,
 				9DF4B7921D62B79300F1992B /* MJRefreshBackNormalFooter.m in Sources */,
+				9D3F8D551EBC6566000A5A4A /* ImagePickerLayout.swift in Sources */,
 				9DF4B63F1D62AAA300F1992B /* SDWebImagePrefetcher.m in Sources */,
 				9DF4B5E01D62A91300F1992B /* ViewController.swift in Sources */,
 				9DF4B78A1D62B79300F1992B /* MJRefreshBackFooter.m in Sources */,
 				9DF4B63B1D62AAA300F1992B /* SDWebImageDecoder.m in Sources */,
 				9DF4B79C1D62B79300F1992B /* UIView+MJExtension.m in Sources */,
 				9DF4B7911D62B79300F1992B /* MJRefreshBackGifFooter.m in Sources */,
+				9D3F8D531EBC6477000A5A4A /* Reusable.swift in Sources */,
 				9DF4B63C1D62AAA300F1992B /* SDWebImageDownloader.m in Sources */,
 				9DF4B7961D62B79300F1992B /* MJRefreshStateHeader.m in Sources */,
 				9DF4B5E61D62A91400F1992B /* WaterFlowCollectionView.xcdatamodeld in Sources */,
@@ -563,6 +588,7 @@
 				9DF4B64C1D62ACD900F1992B /* WaterFallCell.swift in Sources */,
 				9DF4B6421D62AAA300F1992B /* UIImage+MultiFormat.m in Sources */,
 				9DF4B6101D62A99800F1992B /* WaterFlowViewController.swift in Sources */,
+				9D3F8D4A1EBC5D4B000A5A4A /* ImagePickerViewController.swift in Sources */,
 				9DF4B63D1D62AAA300F1992B /* SDWebImageDownloaderOperation.m in Sources */,
 				9DF4B7931D62B79300F1992B /* MJRefreshBackStateFooter.m in Sources */,
 				9DF4B79A1D62B79300F1992B /* UIScrollView+MJExtension.m in Sources */,
@@ -572,8 +598,10 @@
 				9DF4B6411D62AAA300F1992B /* UIImage+GIF.m in Sources */,
 				9DF4B63A1D62AAA300F1992B /* SDWebImageCompat.m in Sources */,
 				9DF4B7891D62B79300F1992B /* MJRefreshAutoFooter.m in Sources */,
+				9D3F8D471EBC53FC000A5A4A /* TransitionAnimation.swift in Sources */,
 				9DF4B7981D62B79300F1992B /* MJRefreshConst.m in Sources */,
 				9DF4B78C1D62B79300F1992B /* MJRefreshFooter.m in Sources */,
+				9D3F8D4E1EBC5F9D000A5A4A /* ImagePickerCell.swift in Sources */,
 				9DF4B6381D62AAA300F1992B /* NSData+ImageContentType.m in Sources */,
 				9DF4B7951D62B79300F1992B /* MJRefreshNormalHeader.m in Sources */,
 				9DF4B5DE1D62A91300F1992B /* AppDelegate.swift in Sources */,

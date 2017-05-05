@@ -16,7 +16,9 @@ class WaterFallCell: UICollectionViewCell {
     {
         didSet{
          
-          let url = URL.init(string: (shopM?.img)! as String)
+            guard let url = URL.init(string: shopM!.img) else {
+                return
+            }
             
            DispatchQueue.main.async { 
             

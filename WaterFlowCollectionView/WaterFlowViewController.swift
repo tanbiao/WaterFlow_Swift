@@ -18,6 +18,15 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     var indexC : Int = 0
     
+    fileprivate var currentIndexPath = IndexPath()
+    
+    fileprivate lazy var transitionAnim : TransitionAnimation = {
+        let transitionAnim = TransitionAnimation()
+        transitionAnim.presentDelegate = self
+        transitionAnim.dismissDelegate = self
+        return transitionAnim
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,7 +104,6 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
             weakSelf!.dataArr.append(contentsOf: shops)
             weakSelf!.collectionView?.reloadData()
             weakSelf!.collectionView?.mj_footer.endRefreshing()
-            
         }
        
     }
@@ -152,6 +160,20 @@ extension WaterFlowViewController
           
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        currentIndexPath = indexPath
+        let imagePicker = ImagePickerViewController()
+        imagePicker.shops = dataArr
+        imagePicker.indexPath = indexPath
+        //这是专场动画的触发点
+        imagePicker.modalPresentationStyle = .custom
+        imagePicker.transitioningDelegate = transitionAnim
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
     //MARK:WaterflowLayoutDelegate==========必须实现
     func waterflowLayout(_ waterflowLayout: WaterFlowLayout, index: Int, itemWidth: CGFloat) -> (CGFloat) {
                
@@ -184,6 +206,58 @@ extension WaterFlowViewController
 
 }
 
+
+extension WaterFlowViewController : PresentAnimationDelegate
+{
+
+    func presentAnimationView() -> UIView {
+        
+        let imageView = UIImageView()
+        let img = dataArr[currentIndexPath.row].img
+        guard let url = URL.init(string: img)  else {
+            return UIView()
+        }
+        
+        DispatchQueue.main.async {
+            imageView.sd_setImage(with: url)
+        }
+        
+        return imageView
+    }
+    
+    func presentAnimationToViewFrame() -> CGRect {
+        
+        return UIApplication.shared.keyWindow!.bounds
+    }
+    
+    func presentAnimationFromViewFrame() -> CGRect {
+        
+        return CGRect.zero
+    }
+   
+
+}
+
+extension WaterFlowViewController : DismissAnimationDelegate
+{
+
+    func dismissAnimationView() -> UIView {
+        
+        return UIView()
+    }
+    
+    func dismissAnimationToViewFrame() -> CGRect {
+        
+        return CGRect.zero
+    }
+
+    func dismissAnimationFromViewFrame() -> CGRect {
+        
+        return UIApplication.shared.keyWindow!.bounds
+    }
+
+
+}
 
 
 
