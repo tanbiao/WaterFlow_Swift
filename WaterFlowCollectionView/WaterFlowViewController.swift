@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,WaterflowLayoutDelegate {
+class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     let waterCellID = "WaterFallCell"
     
@@ -18,6 +18,10 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     var indexC : Int = 0
     
+    /// 记录imagePicker滚到哪里去了
+    fileprivate var imageScrollIndex : Int = 0
+    
+    /// 当前选择哪个图片
     fileprivate var currentIndexPath = IndexPath()
     
     fileprivate lazy var transitionAnim : TransitionAnimation = {
@@ -29,7 +33,6 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         setupInit()
         
@@ -140,7 +143,7 @@ class WaterFlowViewController: UIViewController,UICollectionViewDelegate,UIColle
 }
 
 
-extension WaterFlowViewController
+extension WaterFlowViewController :WaterflowLayoutDelegate
 {
     //MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -170,6 +173,22 @@ extension WaterFlowViewController
         imagePicker.modalPresentationStyle = .custom
         imagePicker.transitioningDelegate = transitionAnim
         
+        imagePicker.scrollCompletion = {
+            (index) in
+            self.imageScrollIndex = index
+            let indexPath = IndexPath(item: index, section: 0)
+            self.currentIndexPath = indexPath
+            guard let cells = self.collectionView?.visibleCells else { return }
+            guard let cell = collectionView.cellForItem(at: indexPath) else {
+            
+                return
+            }
+            let currentIndex = cells.index(of: cell)
+            if (currentIndex != nil) {
+                self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            }
+
+        }
         present(imagePicker, animated: true, completion: nil)
         
     }
@@ -232,23 +251,44 @@ extension WaterFlowViewController : PresentAnimationDelegate
     
     func presentAnimationFromViewFrame() -> CGRect {
         
-        return CGRect.zero
+        guard let cell = collectionView?.cellForItem(at: currentIndexPath) else {
+        
+            return CGRect.zero
+        }
+        
+        return cell.frame
     }
-   
-
+  
 }
 
 extension WaterFlowViewController : DismissAnimationDelegate
 {
-
     func dismissAnimationView() -> UIView {
         
-        return UIView()
+        let imageView = UIImageView()
+        
+        let imag = self.dataArr[self.imageScrollIndex].img
+        guard let url = URL.init(string: imag) else {
+            return UIView()
+        }
+        
+        DispatchQueue.main.async {
+           
+            imageView.sd_setImage(with: url)
+        }
+        
+        return imageView
     }
     
-    func dismissAnimationToViewFrame() -> CGRect {
+    func dismissAnimationToViewFrame() -> CGRect
+    {
+        guard let currentCell = collectionView?.cellForItem(at: currentIndexPath) else {
         
-        return CGRect.zero
+           return CGRect.zero
+            
+        }
+
+         return currentCell.frame
     }
 
     func dismissAnimationFromViewFrame() -> CGRect {

@@ -16,6 +16,10 @@ class ImagePickerViewController: UIViewController {
     
     var indexPath = IndexPath()
     
+    var scrollCompletion : ((Int)-> Void)?
+    
+    fileprivate var isScroll : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +39,7 @@ extension ImagePickerViewController
     {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isPagingEnabled = true
         collectionView.registerCell(ImagePickerCell.self)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
@@ -55,6 +60,18 @@ extension ImagePickerViewController : UICollectionViewDataSource,UICollectionVie
         cell.shop = shops[indexPath.row]
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        if collectionView == scrollView {
+          
+            let width = view.bounds.width
+            let index = Int(scrollView.contentOffset.x / width)
+            scrollCompletion?(index)
+        
+        }
+       
     }
     
 }

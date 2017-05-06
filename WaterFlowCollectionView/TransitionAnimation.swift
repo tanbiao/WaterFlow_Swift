@@ -37,6 +37,10 @@ class TransitionAnimation: NSObject
     fileprivate var isPresent : Bool = true
 }
 
+
+
+// MARK: -UIViewControllerAnimatedTransitioning
+//UIViewControllerAnimatedTransitioning 主要是管转场的具体实现的,和UIViewControllerTransitioningDelegate 一起使用的
 extension TransitionAnimation : UIViewControllerAnimatedTransitioning
 {
 
@@ -56,8 +60,7 @@ extension TransitionAnimation : UIViewControllerAnimatedTransitioning
         }
         else //dismiss 的时候
         {
-        
-        
+           dismissAnimation(transitionContext: transitionContext)
         }
         
     }
@@ -100,12 +103,34 @@ extension TransitionAnimation : UIViewControllerAnimatedTransitioning
     
     private func dismissAnimation(transitionContext : UIViewControllerContextTransitioning ) -> Void
     {
+        guard let delegate = dismissDelegate else {
+            return
+        }
+        
         guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) else {return}
         
-        guard let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) else {return}
-        
         let contaninerView = transitionContext.containerView
-    
+        
+        let animationView = delegate.dismissAnimationView()
+        animationView.frame = delegate.dismissAnimationFromViewFrame()
+        contaninerView.addSubview(animationView)
+        
+        fromView.frame = delegate.dismissAnimationToViewFrame()
+        
+        UIView.animate(withDuration: duration, animations: {
+          
+            animationView.frame = delegate.dismissAnimationToViewFrame()
+            
+        }){
+          complete in
+           
+            //在动画完成的时候,要把中间专场的动画View移除,然后在把目标view加到containerView上
+            contaninerView.addSubview(fromView)
+            animationView.removeFromSuperview()
+            //通知专场完成,可以跟用户交互了
+            transitionContext.completeTransition(true)
+        }
+        
     }
     
 
